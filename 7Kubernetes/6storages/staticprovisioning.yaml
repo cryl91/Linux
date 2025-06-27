@@ -1,3 +1,4 @@
+#PV = Access Mode+ Storage Size
 apiVersion: v1
 kind: PersistentVolume
 metadata:

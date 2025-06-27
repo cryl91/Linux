@@ -27,7 +27,7 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: www
-    spec:
+    spec: 
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: "ebs-sc"
       resources:

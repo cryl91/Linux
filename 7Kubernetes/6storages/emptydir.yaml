@@ -1,4 +1,5 @@
 #Configmap for filebeat
+#Filebeat and Fluentd are both popular log shippers used in modern observability stacks,Use Filebeat if, You want a lightweight, easy-to-deploy log shipper + Use Fluentd if, You need advanced log processing, filtering, or routing.
 apiVersion: v1
 kind: ConfigMap
 metadata:
