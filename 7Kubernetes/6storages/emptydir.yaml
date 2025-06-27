@@ -53,13 +53,13 @@ spec:
           volumeMounts: #This is accessing the logs created above
             - name: nginx-logs
               mountPath: /var/log/nginx/
-            - name: filebeat-config
+            - name: filebeat-config 
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml 
       volumes:
         - name: nginx-logs
           emptyDir: {}
-        - name: filebeat-config
+        - name: filebeat-config # it's a ConfigMap-based volume, which is mounted inside the pod and lives only for the lifetime of the pod.
           configMap:
             name: filebeat-configmap
             items:
