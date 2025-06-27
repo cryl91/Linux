@@ -22,5 +22,3 @@ module "minikube" {
       "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/kubernetes-nginx-ingress/init.sh"
   ]
 }
-
-assa
