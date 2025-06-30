@@ -29,6 +29,7 @@ spec:
     protocol: TCP
     port: 80 #This port number belongs to service
     targetPort: nginx-port #This port number belongs to container
+  # nodePort: 30080 #You can specify a port or k's will auto assign any port. You need to specify the number between 30000-32767
 
 # On command line you can create service using = 
 # Expose prometheus as nodeport =  kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
