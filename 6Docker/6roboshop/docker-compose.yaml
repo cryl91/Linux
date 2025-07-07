@@ -28,3 +28,6 @@ services:
     # depends_on:
     #   - catalogue
     #   - user 
+
+    
+  #command: Optional, replace the default CMD specified by the image. 
