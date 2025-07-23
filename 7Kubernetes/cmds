@@ -79,4 +79,3 @@ nodeGroups:
 4. To get more info expose kube-metrics = kubectl expose service prometheus-kube-state-metrics --type=NodePort --target-port=8080 --name=prometheus-kubemetrics
 
 
-abc 
