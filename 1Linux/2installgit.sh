@@ -1,5 +1,6 @@
 #!/bin/bash
-user=$(id -u)
+user=$(id -u) 
+echo "$user"
 if [ $user -ne 0 ] #date=$(date), If = [], while = [ ], for = {}++++ echo "${array[@]}"
 then
         echo "not root user"

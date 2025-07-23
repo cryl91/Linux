@@ -4,5 +4,3 @@ pip3 install --upgrade pip
 pip3 install ansible
 cd /tmp
 ansible-pull -U https://github.com/cryl91/branch.git main.yaml
-
-asas
