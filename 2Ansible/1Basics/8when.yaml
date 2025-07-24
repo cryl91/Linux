@@ -19,7 +19,7 @@
    
 
    #Simple when
-  - name: Random 
+  - name: check 
     hosts: localhost
     vars:
       name: abc  
