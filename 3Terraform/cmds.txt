@@ -7,7 +7,7 @@
         public_key = file("${path.module}/devops.pub")
 
 
-
+--To see Instances = aws ec2 describe-instances --query "Reservations[*].Instances[*].{ID:InstanceId,State:State.Name,Type:InstanceType,AZ:Placement.AvailabilityZone}" --output table
 --locals are similar to variable but they also allow expressions and functions
 --data sources = you can query the data dynamically from source ie aws
 
