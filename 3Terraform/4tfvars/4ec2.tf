@@ -1,3 +1,6 @@
+#.tfvars files are used to define variables and their values separately from your main .tf configuration files. 
+#This helps keep your code clean, modular, and reusable.
+#Create variable file -> change the variables according to dev or prod in tfvars files -> terraform apply -var-file="dev.tfvars"
 resource "aws_instance" "myinstance" {
    ami                     = var.ami_id
    instance_type           = var.instances  
