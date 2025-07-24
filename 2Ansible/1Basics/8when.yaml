@@ -19,14 +19,14 @@
    
 
    #Simple when
-  - name: check 
-    hosts: localhost
-    vars:
-      name: abc  
-    tasks: 
-    - name: install
-      ansible.builtin.debug:
-        msg: "The name is {{name}}"
+- name: check 
+  hosts: localhost
+  vars:
+    name: abc  
+  tasks: 
+  - name: install
+    ansible.builtin.debug:
+      msg: "The name is {{name}}"
     when: name == "abc"
     
   
