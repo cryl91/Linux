@@ -1,0 +1,6 @@
+- name: Installing roboshop
+  hosts: localhost
+  become: yes
+  roles:
+  - new1
+  - new2
