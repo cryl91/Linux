@@ -1,0 +1,3 @@
+- name: msg1
+  ansible.builtin.debug:
+    msg: "This is first role"
