@@ -22,7 +22,7 @@
 - name: check 
   hosts: localhost
   vars:
-    name: abc  
+    name: def  
   tasks: 
   - name: install
     ansible.builtin.debug:
