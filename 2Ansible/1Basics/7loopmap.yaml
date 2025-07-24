@@ -9,4 +9,3 @@
     loop: #list of map
     - {name: 'nginx', state: 'absent'}
     - {name: 'postfix', state: 'installed'}
-   
