@@ -5,10 +5,10 @@ terraform {
       version = "5.92.0"
     }
   }
+}
 
 provider "aws" {
   # Configuration options
   region = "us-east-1"
 }
- 
-  
+
