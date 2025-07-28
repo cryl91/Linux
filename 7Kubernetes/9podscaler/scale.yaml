@@ -29,7 +29,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: nginx
-spec:
+spec: #scaleTargetRef+minReplicas+maxReplicas+metrics
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
