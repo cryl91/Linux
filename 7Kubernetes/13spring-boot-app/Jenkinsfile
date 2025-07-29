@@ -1,4 +1,4 @@
-pipeline { //Stages = Checkout+Build+Static Code Analysis+Image Creation 
+pipeline { //Stages = Checkout+ Build+ Static Code Analysis+ Image Creation 
   agent { //"Run this pipeline inside a Docker container instead of directly on the Jenkins node."
     docker { //Image+Args
       //image 'abhishekf5/maven-abhishek-docker-agent:v1' //Use this Docker image from Docker Hub as the build environment. It probably contains Maven + Docker CLI pre-installed.
