@@ -1,13 +1,13 @@
 pipeline {
   agent { //"Run this pipeline inside a Docker container instead of directly on the Jenkins node."
-    docker {
+    docker { //Image+Args
       //image 'abhishekf5/maven-abhishek-docker-agent:v1' //Use this Docker image from Docker Hub as the build environment. It probably contains Maven + Docker CLI pre-installed.
       image 'maven'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // Run the container as root user, and mount the Docker socket so that Docker CLI commands inside the container can talk to the host’s Docker daemon. The Docker socket is a special Unix file located at: /var/run/docker.sock. It acts as an interface between the Docker CLI and the Docker daemon (dockerd). If you mount the socket into a container, then the container can send commands to the host’s Docker daemon. This is how you allow a container to build, run, and manage other containers on the host.
     }
   }
   stages {
-    stage('Checkout') { //The checkout stage is typically the first step in a CI/CD pipeline. It refers to retrieving your source code from a version control system like GitHub, GitLab, or Bitbucket so that the pipeline can build, test, or deploy it. It clones or pulls the repository to the agent/runner machine
+    stage('Checkout') { //The checkout stage is typically the first step in a CI/CD pipeline mainly for cloning the code. It refers to retrieving your source code from a version control system like GitHub, GitLab, or Bitbucket so that the pipeline can build, test, or deploy it. It clones or pulls the repository to the agent/runner machine
       steps {
         sh 'echo passed'
         //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
