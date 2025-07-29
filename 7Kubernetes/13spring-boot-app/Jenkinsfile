@@ -1,4 +1,4 @@
-pipeline { //Stages = Checkout+ Build+ Static Code Analysis+ Image Creation 
+pipeline { //Stages = Checkout+ Build(mvn clean package)+ Static Code Analysis(mvn sonar:sonar)+ Image Creation(Docker Build)
   agent { //"Run this pipeline inside a Docker container instead of directly on the Jenkins node."
     docker { //Image+Args
       //image 'abhishekf5/maven-abhishek-docker-agent:v1' //Use this Docker image from Docker Hub as the build environment. It probably contains Maven + Docker CLI pre-installed.
@@ -20,23 +20,26 @@ pipeline { //Stages = Checkout+ Build+ Static Code Analysis+ Image Creation
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
       } 
     }
+
+    //Credential = Used inside environment {}+ For the whole stage+ Sets an environment variable from a credential directly inside a stage's environment {} block
+    //WithCredential = Used in script {} or steps+Inside the block only+Temporarily injects credentials as environment variables for use in shell scripts
     stage('Static Code Analysis') {
-      environment {
-        SONAR_URL = "http://3.90.239.211:9000"
+      environment {//Environment variables are dynamic key-value pairs used to store configuration or runtime information. It is used to avoid hardcoding values
+        SONAR_URL = "http://3.90.239.211:9000"  
       }
       steps { //withCredentials is a Jenkins Pipeline step that allows you to safely use credentials stored in Jenkins (like tokens, passwords, usernames, etc.) inside a pipeline script, without hardcoding secrets in your code
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) { //variable: 'SONAR_AUTH_TOKEN' This is the temporary environment variable that Jenkins creates inside the withCredentials block. It injects the secret into this variable.
-          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=${SONAR_AUTH_TOKEN} -Dsonar.host.url=${SONAR_URL}'
         }
       }
     }
     stage('Build and Push Docker Image') {
-      environment {
+      environment { 
         DOCKER_IMAGE = "abhishekf5/ultimate-cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
-      steps {
+      steps { //You need to use script when you Declare variables (def), Use conditionals (if, switch), Use loops (for, while), Call methods/functions
         script {
             sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
             def dockerImage = docker.image("${DOCKER_IMAGE}") //docker.image(...) doesn't build or pull — it just represents the image, so you can run commands on it later (like push, run, etc.). def in Groovy (the language Jenkins pipelines use). The keyword def is used to define a variable without explicitly specifying its type.
