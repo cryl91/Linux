@@ -49,7 +49,7 @@ pipeline { //Stages = Checkout+ Build(mvn clean package)+ Static Code Analysis(m
                 dockerImage.push() //This command pushes the Docker image (which was defined earlier) to the Docker registry. It uses the authenticated session from withRegistry.
                 // You can push directly with docker.image("name").push() without defining it as  def dockerImage = docker.image("${DOCKER_IMAGE}"). But if you're going to reuse the image, define it as a variable with def dockerImage = docker.image(...) for clarity and flexibility.
             }
-        }
+        } 
       }
     }
     stage('Update Deployment File') {
