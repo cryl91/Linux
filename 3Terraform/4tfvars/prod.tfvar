@@ -1,8 +1,10 @@
-instance_name = "Prod-mongodb"
+#dev tfvars
+# instance_name = "Dev-mongodb"
  
 tags = {
-    Name = "mongodb-Prod"
-    Envirnoment-prod = "Prod"
+    Name = "mongodb-prod"
+    Envirnoment-dev = "prod"
     
     }
+
 
