@@ -1,4 +1,4 @@
-pipeline { //Stages = Checkout+ Build(mvn clean package)+ Static Code Analysis(mvn sonar:sonar)+ Image Creation(Docker Build)
+pipeline { //Stages = Checkout+ Build(mvn clean package)+ Static Code Analysis(mvn sonar:sonar)+ Image Creation(Docker Build) & Push(docker.image("name").push())
   agent { //"Run this pipeline inside a Docker container instead of directly on the Jenkins node."
     docker { //Image+Args
       //image 'abhishekf5/maven-abhishek-docker-agent:v1' //Use this Docker image from Docker Hub as the build environment. It probably contains Maven + Docker CLI pre-installed.
@@ -39,7 +39,7 @@ pipeline { //Stages = Checkout+ Build(mvn clean package)+ Static Code Analysis(m
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
-      steps { //You need to use script when you Declare variables (def), Use conditionals (if, switch), Use loops (for, while), Call methods/functions
+      steps { //You need to use script when you Declare variables (def), Use conditionals (if, switch), Use loops (for, while), Call methods/functions within groovy
         script { 
             sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
             def dockerImage = docker.image("${DOCKER_IMAGE}") //docker.image(...) doesn't build or pull — it just represents the image, so you can run commands on it later (like push, run, etc.). def in Groovy (the language Jenkins pipelines use). The keyword def is used to define a variable without explicitly specifying its type.
