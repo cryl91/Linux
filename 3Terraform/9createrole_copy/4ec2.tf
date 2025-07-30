@@ -10,8 +10,10 @@ resource "aws_iam_role" "ec2" {
     "Statement": [
         {
             "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
+            "Principal": {
+                "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
         }
     ]
 })
@@ -24,7 +26,7 @@ resource "aws_iam_role" "ec2" {
 
 resource "aws_iam_role_policy_attachment" "ec2_ssm_access" {
   role       = aws_iam_role.ec2.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 # Create Instance Profile. aws_iam_instance_profile needed?
