@@ -26,24 +26,24 @@ output "vpc_info" {
 }
 
 #create security group using vpc information
-resource "aws_security_group" "sg" {
-  name = "sg"
-  vpc_id = data.aws_vpc.default.id
-  description = "allowing all"
+# resource "aws_security_group" "sg" {
+#   name = "sg"
+#   vpc_id = data.aws_vpc.default.id
+#   description = "allowing all"
   
-  ingress {
-    description = "from vpc"
-    from_port = 0
-    to_port   = 0
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+#   ingress {
+#     description = "from vpc"
+#     from_port = 0
+#     to_port   = 0
+#     protocol = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
 
-  egress {
+#   egress {
 
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"  #all protocols
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-} 
+#     from_port   = 0
+#     to_port     = 0
+#     protocol    = "-1"  #all protocols
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+# } 
