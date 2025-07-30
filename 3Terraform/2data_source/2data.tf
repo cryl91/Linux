@@ -22,7 +22,7 @@ data "aws_vpc" "default" {
 }
 
 output "vpc_info" {
-  value = data.aws_vpc.default
+  value = data.aws_vpc.default.id
 }
 
 #create security group using vpc information
