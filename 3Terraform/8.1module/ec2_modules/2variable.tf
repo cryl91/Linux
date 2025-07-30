@@ -14,12 +14,3 @@ variable "tags"{
       Envirnoment = "dev"
    }
 }
-variable "tags" {
-    type = map
-    default = { 
-        Name = "mongodb"
-        Envirnoment = "dev"
-    
-    }
-}
-
