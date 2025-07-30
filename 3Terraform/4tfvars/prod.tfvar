@@ -1,0 +1,8 @@
+instance_name = "Prod-mongodb"
+ 
+tags = {
+    Name = "mongodb-Prod"
+    Envirnoment-prod = "Prod"
+    
+    }
+
