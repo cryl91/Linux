@@ -47,3 +47,12 @@ Use Case	Remote access	Web communication
 Port	22	80 (or 443 for HTTPS)
 Secure?	Yes (always)	Only with HTTPS
 Connection Type	Persistent, interactive	Stateless, request/response
+
+--Types of Targets in a Route Table
+Target Type	What It Does
+local	Routes traffic inside the VPC
+IGW	Sends traffic to the Internet
+NAT Gateway	Sends traffic from private subnets to Internet
+VPC Peering	Sends traffic to another VPC
+VPN Gateway	Routes traffic to an on-premises network
+Transit Gateway	For routing across multiple VPCs or VPNs
