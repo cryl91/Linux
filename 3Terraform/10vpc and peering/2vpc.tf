@@ -51,7 +51,7 @@ resource "aws_route_table" "rtpublic" {
 
 resource "aws_route" "vpc1_public" {
   route_table_id            = aws_route_table.rtpublic.id
-  destination_cidr_block    = "0.0.0.0/0"
+  destination_cidr_block    = "0.0.0.0/0" //0.0.0.0/0 = means all traffic goes to the internet
   gateway_id = aws_internet_gateway.ig.id
   
 }

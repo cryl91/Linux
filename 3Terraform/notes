@@ -56,3 +56,7 @@ NAT Gateway	Sends traffic from private subnets to Internet
 VPC Peering	Sends traffic to another VPC
 VPN Gateway	Routes traffic to an on-premises network
 Transit Gateway	For routing across multiple VPCs or VPNs
+
+--A gateway is a device or service that connects your VPC network to another network, such internet, etc. 3 types = Internet gateway+ NAT Gateway+ Gateway Endpoint(Special type of gateway to connect privately to AWS services like S3 or DynamoDB, Traffic never leaves AWS network). 
+--Router (Route Table in AWS) = Decides path for data ie Decides where to send network traffic based on the destination IP. AWS route tables act like routers:
+--Gateway(Connects different networks ie Your front door to the world) = Think of it as a gate between two different networks (e.g., your VPC and the internet). It sends and receives traffic across network boundaries. 
