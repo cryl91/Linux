@@ -1,0 +1,43 @@
+--Why Do You Need a VPC Endpoint?
+By default, when your resources (like EC2 instances) in a VPC want to access AWS services (like S3, DynamoDB, etc.), they do so over the public internet. But with a Gateway VPC Endpoint, you: Create a private route from your VPC to S3.No public IPs, NAT, or Internet Gateway needed
+That has drawbacks.
+
+A VPC Endpoint solves those drawbacks by enabling private, secure, and faster access to AWS services from within your VPC, without needing:
+
+an Internet Gateway (IGW)
+
+a NAT Gateway
+
+or public IPs
+
+--The local route in a VPC’s route table is an automatic, default route that allows communication between subnets within the same VPC. 	The VPC’s CIDR block (e.g., 10.0.0.0/16)
+--CIDR stands for Classless Inter-Domain Routing = way to represent a range of IP addresses using two components: <starting IP address>/<prefix length>
+e.g., 10.0.0.0/16 = The prefix length (after the /) tells you how many bits are fixed for the network portion. The remaining bits are used for host addresses.
+
+--CIDR Block	# of IPs	Common Use
+/32	1	Single IP (used in security groups/firewalls)
+/24	256	Common for subnets
+/16	65,536	Common for VPCs
+/12	1,048,576	Big corporate/private networks
+
+-- IP Address = Network Portion + Host Portion
+Portion	Meaning
+Network	= Identifies the network or subnet you're in
+Host = Identifies the specific device (host) within that network
+
+--Whenever you create a subnet in AWS (say 10.0.0.0/24), AWS automatically reserves 5 IP addresses that you cannot assign to any EC2 or other resource. Here’s what they are:
+
+Reserved IP	Example in 10.0.0.0/24	Purpose
+1. Network address	10.0.0.0	Identifies the subnet itself. Not assignable.
+2. VPC router / Gateway	10.0.0.1	Reserved for the subnet's default gateway/router (used for routing within VPC). In AWS, each subnet has a virtual router — part of the VPC networking system — that helps route traffic within the VPC and to/from the internet or other networks ie EC2 in Subnet A talking to EC2 in Subnet B.
+3. DNS server	10.0.0.2	Reserved for AWS-provided DNS server (used by EC2s to resolve domain names).
+4. Reserved for future use	10.0.0.3	AWS keeps this for internal/future use.
+5. Broadcast address	10.0.0.255	Traditional broadcast address in networking, not used in AWS, but still reserved.
+
+--VPC CIDR Block: 10.0.0.0/16 = This gives you IP addresses from 10.0.0.0 to 10.0.255.255 — a total of 65,536 IP addresses (2¹⁶).
+--Subnet 1: 10.0.0.0/20 = Covers 10.0.0.0 to 10.0.15.255 — 4,096 IPs ->20 bits are fixed for the network part.32 - 20 = 12 bits are left for the host part. 2¹² = 4096 total IP addresses.
+--Subnet 2: 10.0.128.0/20 = Covers 10.0.128.0 to 10.0.143.255 — also 4,096 IPs
+
+
+
+
