@@ -37,3 +37,12 @@
 
         4. Create sonar_project.properties
 --Variables usage in terraform = name = ${var.project_name}-catalogue-${var.env}s
+--Remote login = ssh-keygen+ resource aws_key_pair+ chmod+ Import+ Login
+        1. Create ssh-keygen -t rsa -f <keyname> = It generates public and private key file in the devops /c/devops/Linux folder
+        2. Pass the public key file into ec2 instance through = resource "aws_key_pair" "generated"
+        3. Change private permissions = chmod 400 /c/devops/Linux/lock
+        4. Import the public key into aws in "KeyPairs" section. 
+        5. Login from gitbash = ssh -i privatekeyfilepath ec2-user@<public-ip>.
+        --To see detailed logs = ssh -vvv -i /c/devops/Linux/lock ec2-user@44.202.67.36
+
+

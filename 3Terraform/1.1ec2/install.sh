@@ -1,5 +1,5 @@
 #!/bin/bash
-yum install ansible -y
+yum install nginx -y
 
 #Steps to run ansible-roles
 #cd /tmp
