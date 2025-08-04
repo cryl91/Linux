@@ -1,5 +1,5 @@
 resource "aws_key_pair" "generated" {
-  key_name   = "Terraform"
+  key_name   = "lock"
   public_key = file("lock.pub")
 }
 
