@@ -1,6 +1,6 @@
 #!/bin/bash
 yum install nginx -y
-yum remove ansible -y
+#yum remove ansible -y
 
 #Steps to run ansible-roles
 #cd /tmp
