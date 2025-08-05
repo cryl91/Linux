@@ -15,7 +15,7 @@ pipeline {
             script{//Use script to define variables in groovy
             def docker = "car"
             echo "building and ${user} and ${params.PERSON} & ${docker}"
-            sh 'pwd'
+            sh 'pwd' //Output = /var/lib/jenkins/workspace/Linux
             sh '''
             cd ../..
             ls -ltr
@@ -34,10 +34,10 @@ pipeline {
             
         }
         stage('Deploy') {
-            steps {
-            sh '''
+            steps { //To see other folders move from Linux folder = cd 1Linux/ or cd 2Ansible/  
+            sh ''' 
             echo "Deploying"
-            cd 1Linux/
+            cd 1Linux/ 
             ls -ltr
                '''
             }
