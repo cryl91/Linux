@@ -6,9 +6,7 @@
 5. To use git pull = git pull origin master
 
 --branch = git branch -m main 
+--Git checkout -b feature = Creates and switches to the new branch
 --Delete Branch = 
     1. Delete a Local Branch = git branch -D branch_name
     2. Delete a Remote Branch = git push origin --delete branch_name
-
-
-
