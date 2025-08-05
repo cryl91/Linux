@@ -8,6 +8,9 @@ pipeline {
     }
     stages {
         stage('build') {
+            environment {
+                user = "cdf"
+            }
             steps {
             script{//Use script to define variables in groovy
             def docker = "car"
