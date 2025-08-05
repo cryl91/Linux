@@ -3,5 +3,12 @@
 2. Create repo in local computer
 3. In local computer = Git init+ git remote add origin <Http-URL-of-your-repo>
 4. Local computer = git add .; git commit -m "First" ; git push origin main
+5. To use git pull = git pull origin master
 
---branch = git branch -m main
+--branch = git branch -m main 
+--Delete Branch = 
+    1. Delete a Local Branch = git branch -D branch_name
+    2. Delete a Remote Branch = git push origin --delete branch_name
+
+
+
