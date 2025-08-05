@@ -5,11 +5,14 @@ pipeline {
     }
     stages {
         stage('build') {
+            steps {
             echo "building and ${user}"
             sh 'pwd'
             sh '''
             ls -l
             '''
+            }
+            
         }
 
         }
