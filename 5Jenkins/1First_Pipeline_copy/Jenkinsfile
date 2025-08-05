@@ -17,7 +17,7 @@ pipeline {
             echo "building and ${user} and ${params.PERSON} & ${docker}"
             sh 'pwd'
             sh '''
-            cd ..
+            cd ../..
             ls -ltr
             '''
             }
@@ -28,6 +28,7 @@ pipeline {
             steps {
             sh '''
             echo "Testing"
+            ls -ltr
                '''
             }
             
