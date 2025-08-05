@@ -1,0 +1,93 @@
+pipeline {
+    agent any //To run on different agent = agent { node { label 'agent1' } }
+    environment {
+    user = 'abc'
+    }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    //Triggers to build the pipleine every one minute. But to see its effect run for the first time and from second time it will trigger every 1min
+    //triggers {
+    //    cron ('* * * * *')
+    //}
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+                sh 'pwd' //one way to write shell commands.Below is the other method
+
+                sh ''' 
+                ls -l
+                printenv
+                '''
+
+                //Use triple double quotes (""") instead of single quotes (''') 
+                //to allow Groovy to evaluate variables before passing them to the shell.
+                sh """ 
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+                """
+            } 
+        }
+        stage('Test') {
+            //when {
+            //    branch 'main'
+            //}
+            steps {
+                echo 'Testing'
+            }
+        }
+
+        //Parallel Execution
+        stage('Parallel Tasks') {
+        parallel { 
+            stage('Parallel 1') {
+                steps {
+                    echo 'Parallel 1 Executed'
+                }
+            }
+            stage('Parallel 2') {
+                steps {
+                    echo 'Parallel 2 Executed'
+                    }
+                }
+            }
+        }
+        //End Parallel Execution
+        stage('Artifactcreation') {
+            steps {
+                echo 'Creating of artifact'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploy1'
+            }
+        }
+    }
+
+        post {
+            always {
+                echo "I will run everytime"
+            }
+
+            success {
+                echo "I will run only on success"
+            }
+            failure {
+                echo "I will run only on failure"
+            }
+        }
+    
+} 
