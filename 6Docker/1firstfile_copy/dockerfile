@@ -1,5 +1,5 @@
 #almalinux is same as centos
-FROM almalinux:8 
+FROM nginx:stable-perl 
 #Label is to give tags. Adds metadata to your image. You can add as many labels as you like, and using backslashes \ to split lines is good practice for readability.
 #To filter = docker images --filter label=course=devops
 LABEL course=devops \
