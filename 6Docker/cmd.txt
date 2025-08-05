@@ -15,6 +15,3 @@ Docker volumes map(named) = docker volume create <name>+ docker run -d -p 80:80 
 2. Systemctl start docker 
 3. Systemctl enable docker = That’s a command used on Linux systems to enable the Docker service so it starts automatically at boot time.
 4. sudo usermod -aG docker ec2-user = We add the user (ec2-user) to the docker group so that you can run Docker commands without needing sudo every time.
- 
- as
- 
