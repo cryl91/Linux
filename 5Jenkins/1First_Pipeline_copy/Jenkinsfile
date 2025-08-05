@@ -3,14 +3,20 @@ pipeline {
     environment {
     user = 'abc'
     }
+    parameters {
+         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('build') {
             steps {
-            echo "building and ${user}"
+            script{
+            def docker = "car"
+            echo "building and ${user} and ${params.PERSON} & ${docker}"
             sh 'pwd'
             sh '''
             ls -l
             '''
+            }
             }
             
         }
