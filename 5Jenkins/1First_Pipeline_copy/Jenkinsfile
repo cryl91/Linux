@@ -33,6 +33,16 @@ pipeline {
             }
             
         }
+        stage('Deploy') {
+            steps {
+            sh '''
+            echo "Deploying"
+            cd /home/ec2-user/Linux/1Linux
+            ls -ltr
+               '''
+            }
+            
+        }
         
         stage('Parallel Tasks') {
         parallel { 
