@@ -16,9 +16,7 @@ pipeline {
             def docker = "car"
             echo "building and ${user} and ${params.PERSON} & ${docker}"
             sh 'pwd'
-            sh '''
-            ls -l
-            '''
+            sh 'cd .. && ls -ltr'
             }
             }
             
