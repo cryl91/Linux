@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-            script{
+            script{//Use script to define variables in groovy
             def docker = "car"
             echo "building and ${user} and ${params.PERSON} & ${docker}"
             sh 'pwd'
@@ -17,6 +17,14 @@ pipeline {
             ls -l
             '''
             }
+            }
+            
+        }
+        stage('Test') {
+            steps {
+            sh '''
+            echo "Testing"
+               '''
             }
             
         }
