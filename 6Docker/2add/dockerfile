@@ -8,5 +8,5 @@ ADD https://github.com/cryl91/Linux /tmp/
 
 #Can untar the file. Keep the tar file in this repository
 #ADD sample.tar /tmp/
-
-CMD ["/bin/bash"]
+RUN sudo yum install nginx -y
+CMD ["nginx", "-g", "daemon off;"]
