@@ -1,6 +1,11 @@
 #Command to run = docker-compose up -d
 #Use the host’s IP address, not the container’s IP, even on a custom bridge. 
 #You’re mapping container’s port to the host with -p, and that’s what makes it reachable via browser.
+#To install docker-compose = 
+  #1. sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  #2. sudo chmod +x /usr/local/bin/docker-compose
+  #3. docker-compose --version
+
 networks:
   roboshop:
     driver: bridge
