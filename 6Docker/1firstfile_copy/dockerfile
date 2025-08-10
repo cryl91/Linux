@@ -7,6 +7,7 @@ RUN yum install nginx -y
 #Remove index.html to copy your index.html to the file
 RUN rm -rf /usr/share/nginx/html/index.html
 COPY index.html /usr/share/nginx/html/index.html
-
+RUN useradd cyril
+USER cyril
 #Combining commands to reduce size by reducing layering of images 
 CMD ["nginx", "-g", "daemon off;"]
