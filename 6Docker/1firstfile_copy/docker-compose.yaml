@@ -13,7 +13,7 @@ volumes:
   web:
 services: 
   web:
-    image: img
+    image: img2
     container_name: web
     networks: 
       - roboshop
