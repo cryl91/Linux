@@ -2,12 +2,11 @@
 FROM almalinux:8 
 #Label is to give tags. Adds metadata to your image. You can add as many labels as you like, and using backslashes \ to split lines is good practice for readability.
 #To filter = docker images --filter label=course=devops
-EXPOSE 80/tcp
+RUN useradd cyril
+USER cyril
 RUN yum install nginx -y
 #Remove index.html to copy your index.html to the file
 RUN rm -rf /usr/share/nginx/html/index.html
 COPY index.html /usr/share/nginx/html/index.html
-RUN useradd cyril
-USER cyril
 #Combining commands to reduce size by reducing layering of images 
 CMD ["nginx", "-g", "daemon off;"]
