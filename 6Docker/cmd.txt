@@ -1,6 +1,6 @@
 Docker build = docker build -t web:1 .
 Docker run = docker run -d -p 80:80 <image-id>
-Docker exec = docker exec -it <container id> bash
+Docker exec = docker exec -it <container id> bash = Bash is the command running here. We can run ls also.
 Docker compose up: docker-compose up -d 
 Docker compose down: docker-compose down 
 
