@@ -1,3 +1,5 @@
+#To directly label nodes = Kubectl label nodes nodename env=dev
+#To filter based on labels = kubectl logs -l name=mylabel
 apiVersion: v1
 kind: Pod
 metadata:

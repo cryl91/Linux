@@ -1,3 +1,6 @@
+#To undo deployment = kubectl rollout undo deployment deploymentname --to-revision = 1
+#To Pause deployment = kubectl rollout pause deployment deploymentname --to-revision = 1
+#To Resume deployment = kubectl rollout resume deployment deploymentname --to-revision = 1
 apiVersion: apps/v1
 kind: Deployment
 metadata:
