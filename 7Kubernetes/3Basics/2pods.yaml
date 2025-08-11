@@ -31,6 +31,6 @@ spec:
     port: 80 #This port number belongs to service
     targetPort: 80 #This port number belongs to container
     nodePort: 30080  # External port on node (must be 30000–32767)
-#To see node IPs = kubectl get nodes -o wide
-#To login in = http://<NodeIP>:30080
+#To see node External IPs = kubectl get nodes -o wide
+#To login in = http://<External NodeIP>:30080
 
