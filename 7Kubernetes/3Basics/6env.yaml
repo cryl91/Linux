@@ -1,3 +1,7 @@
+# environment variables are mainly used to pass configuration data, secrets, or runtime parameters into containers 
+#without hardcoding them in the application code or Docker image. Also Store sensitive data in Secrets and inject them into Pods as env vars
+#We can pass simple envirnoment variables like below or Environment Variables from a ConfigMap or secret
+#Check Environment Variables in a Running Pod = kubectl exec -it <pod-name> -- env or printenv
 apiVersion: v1
 kind: Pod
 metadata:
