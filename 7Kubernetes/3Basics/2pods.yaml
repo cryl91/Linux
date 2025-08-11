@@ -10,4 +10,4 @@ spec:
     imagePullPolicy: Always #To always pull the latest image
     ports:
     - containerPort: 80
-
+#If you wanted the image from another registry, you’d explicitly set it, e.g.: image: myregistry.example.com/custom-nginx:1.14.2
