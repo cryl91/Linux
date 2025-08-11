@@ -16,4 +16,4 @@ managedNodeGroups: # this is also completely managed by AWS
     # - us-east-1c
     desiredCapacity: 2
     ssh:
-      publicKeyName: terraform # replace this with your keypair exists in AWS.
+      publicKeyName: Linux # replace this with your keypair exists in AWS.
