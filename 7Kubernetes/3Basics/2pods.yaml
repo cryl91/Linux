@@ -19,6 +19,7 @@ apiVersion: v1
 kind: Service
 metadata: 
   name: nginx-service
+  namespace: roboshop #Since kubectl matches Services to Pods within the same namespace, they won’t connect unless both are in roboshop
 spec:
   type: NodePort #The only difference from clusterip
   selector: #The service attaches to the pod by matching with the labels
