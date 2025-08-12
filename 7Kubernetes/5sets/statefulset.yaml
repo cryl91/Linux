@@ -29,7 +29,7 @@ spec:
   - metadata:
       name: www
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: [ "ReadWriteOnce" ] #If it’s using AWS EBS, the access mode ReadWriteOnce means each PVC is bound to one node.
       storageClassName: "ebs-sc"
       resources:
         requests:
