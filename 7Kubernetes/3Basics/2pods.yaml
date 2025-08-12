@@ -15,13 +15,11 @@ spec:
     - containerPort: 80 
     volumeMounts:
     - name: varlog
-          mountPath: /var/log
+      mountPath: /var/log
   volumes:
   - name: varlog
     hostPath: #Gives access to /var/log from the node
       path: /var/log 
-
-
 #If you wanted the image from another registry, you’d explicitly set it, e.g.: image: myregistry.example.com/custom-nginx:1.14.2
 ---
 apiVersion: v1
