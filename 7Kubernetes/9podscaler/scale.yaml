@@ -1,3 +1,4 @@
+#The Horizontal Pod Autoscaler (HPA) in Kubernetes is a built-in controller that automatically adjusts the number of pod replicas in a deployment, replica set, or stateful set based on observed resource usage (like CPU or memory) or custom metrics.
 #Install a metric server to calculate the cpu or memory usage(kubectl top pods) = kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -42,7 +43,10 @@ spec: #scaleTargetRef+minReplicas+maxReplicas+metrics
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 50
+        averageUtilization: 50 #Target CPU utilization = 50%
+        #CPU utilization refers to how much CPU your pods are actually using compared to the CPU request value defined in the Pod/Deployment spec. For this you need to give the cpu resources and limits
+        #Current CPU usage → Collected from metrics-server (average across all pods targeted by the HPA). If more less scale pods or scale down pods
+        #Every 15 seconds (by default), HPA fetches the current metrics from metrics-server. Example: Target CPU utilization: 50% and Current CPU utilization: 80%
 
 # HPA adjusts the number of pods, not containers directly.
 # In your Deployment, each pod runs one container (nginx).
@@ -55,3 +59,4 @@ spec: #scaleTargetRef+minReplicas+maxReplicas+metrics
 # It does not multiply with initial replicas — it controls the total pod count within the range [minReplicas, maxReplicas].
 # So the max number of nginx containers = 5, not 15.
 # Summary: Initial pods = 3 (from replicas). HPA dynamically scales between 1 and 5 pods. Each pod = 1 container → Max containers = 5
+#HPA won’t instantly scale down if target utilization is less — it waits for a stabilization window (default ~5 min) to avoid thrashing.
