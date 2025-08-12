@@ -38,7 +38,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-stateless #To make stateful set as headless service
+  name: nginx-stateless #To make stateful set as headless service ie headless service means there is no cluster IP and the service directly points to the Pod IP instead.
 spec:
   clusterIP: None #To make it a headless service give this
   selector:
