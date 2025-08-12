@@ -1,3 +1,4 @@
+#A StatefulSet in Kubernetes is a workload API object used to manage stateful applications ie apps that need stable network IDs, persistent storage, and ordered deployment/scaling
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
