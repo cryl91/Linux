@@ -27,9 +27,9 @@ spec:
         - containerPort: 80
         resources:             
           requests:
-            cpu: 200m
+            cpu: 200m #0.2 CPU core++++ HPA checks average CPU utilization across pods vs 50% of request (200m × 50% = 100m threshold). If usage > threshold → Scales up.
           limits:
-            cpu: 500m
+            cpu: 500m 500m   #0.5 CPU core
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler

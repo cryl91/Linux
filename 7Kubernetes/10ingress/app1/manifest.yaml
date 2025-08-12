@@ -58,4 +58,11 @@ spec:
             name: app1
             port:
               number: 80
+      # - path: /api #Another Ingress Rule defined
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: api
+      #       port:
+      #         number: 80        
  
