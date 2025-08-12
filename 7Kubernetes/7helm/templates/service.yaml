@@ -13,4 +13,4 @@ spec:
     port: 80 #This port number belongs to service
     targetPort: nginx-port #This port number belongs to container
 
-    #{{ .Values.service.port }}
+    #{{ .Values.service.port }} 
