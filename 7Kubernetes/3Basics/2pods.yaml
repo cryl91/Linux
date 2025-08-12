@@ -12,14 +12,7 @@ spec:
     image: nginx:1.14.2 #Kubernetes will pull the nginx:1.14.2 image from Docker Hub by default. Kubernetes defaults to docker.io (Docker Hub) when no registry is provided
     imagePullPolicy: Always #To always pull the latest image
     ports:
-    - containerPort: 80 
-    volumeMounts:
-    - name: varlog
-      mountPath: /var/log
-  volumes:
-  - name: varlog
-    hostPath: #Gives access to /var/log from the node
-      path: /var/log 
+    - containerPort: 80  
 #If you wanted the image from another registry, you’d explicitly set it, e.g.: image: myregistry.example.com/custom-nginx:1.14.2
 ---
 apiVersion: v1
