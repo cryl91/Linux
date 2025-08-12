@@ -1,0 +1,4 @@
+#A DaemonSet in Kubernetes is a controller that ensures exactly one Pod runs on each node in the cluster (or on a subset of nodes that match a selector).
+#You’d use it when you need something running everywhere, often for node-level operations like:
+ #1. Log collection – e.g., Fluentd, Logstash
+ #2. Monitoring agents – e.g., Prometheus Node Exporter, Datadog agent
