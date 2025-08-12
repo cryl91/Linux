@@ -31,8 +31,8 @@ spec:
             memory: 256Mi
         volumeMounts: 
         - name: varlog
-          mountPath: /var/log
+          mountPath: /var/log #This means that anything the container writes to /var/log will actually be stored on the host machine.
       volumes:
       - name: varlog
         hostPath: #Gives access to /var/log from the node
-          path: /var/log 
+          path: /var/log # The directory on the node you want to mount into the container.
