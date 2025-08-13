@@ -22,16 +22,14 @@ metadata:
 apiVersion: v1
 data:
   mapRoles: |
-    - groups:  
+    - groups:
       - system:bootstrappers
       - system:nodes
       rolearn: arn:aws:iam::717279696402:role/eksctl-eks-cluster-nodegroup-spot-NodeInstanceRole-PFsC5z9RWwm4
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
-    - groups:
-       - roboshop-admin #A group in Kubernetes is just a label for a set of users. Yes — technically, you can avoid writing groups in the aws-auth ConfigMap.
-        userarn: arn:aws:iam::717279696402:user/cyril
-        username: ramesh
+       - userarn: arn:aws:iam::833660969111:user/abc
+         username: abc
 kind: ConfigMap
 metadata:
   creationTimestamp: "2025-04-21T17:12:18Z"

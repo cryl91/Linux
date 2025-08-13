@@ -1,7 +1,6 @@
 #In Kubernetes, Role-Based Access Control (RBAC) is a security mechanism that decides who can do what inside your cluster.
 #Role = Defines a set of permissions (rules) within a namespace.
-#ClusterRole = Like Role, but cluster-wide or across all namespaces. Example: Allow reading pods in any namespace.
-#How to use =  Create RBAC+ Login as the new AWS IAM User/Role in a new ec2 instance ie aws configure
+# ClusterRole = Like Role, but cluster-wide or across all namespaces. Example: Allow reading pods in any namespace.
 #Namespace
 apiVersion: v1
 kind: Namespace
@@ -41,7 +40,7 @@ metadata:
 subjects:
 # You can specify more than one "subject"
 - kind: User
-  name: ramesh # "name" is case sensitive
+  name: abc # "name" is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   # "roleRef" specifies the binding to a Role / ClusterRole
@@ -57,31 +56,31 @@ metadata:
   name: roboshop-cluster-reader
 subjects:
 - kind: User
-  name: ramesh # Name is case sensitive
+  name: abc # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: roboshop-cluster-reader
   apiGroup: rbac.authorization.k8s.io
----
-#Edited auth-configmap by adding mapUser ie adding ramesh and informing kubernetes regarding user and role binding
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  creationTimestamp: "2025-04-21T17:12:18Z"
-  name: aws-auth
-  namespace: kube-system
-  resourceVersion: "1308"
-  uid: 76bfa94f-03ac-4168-93a1-0c8ab523eeeb
-data:
-  mapRoles: |
-    - groups:
-      - system:bootstrappers
-      - system:nodes
-      rolearn: arn:aws:iam::717279696402:role/eksctl-eks-cluster-nodegroup-spot-NodeInstanceRole-PFsC5z9RWwm4
-      username: system:node:{{EC2PrivateDNSName}}
-  mapUsers: |
-    - groups:
-       - roboshop-admin
-        userarn: arn:aws:iam::717279696402:user/ramesh
-        username: ramesh
+# ---
+# #Edited auth-configmap by adding mapUser ie adding ramesh and informing kubernetes regarding user and role binding
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   creationTimestamp: "2025-04-21T17:12:18Z"
+#   name: aws-auth
+#   namespace: kube-system
+#   resourceVersion: "1308"
+#   uid: 76bfa94f-03ac-4168-93a1-0c8ab523eeeb
+# data:
+#   mapRoles: |
+#     - groups:
+#       - system:bootstrappers
+#       - system:nodes
+#       rolearn: arn:aws:iam::717279696402:role/eksctl-eks-cluster-nodegroup-spot-NodeInstanceRole-PFsC5z9RWwm4
+#       username: system:node:{{EC2PrivateDNSName}}
+#   mapUsers: |
+#     - groups:
+#        - roboshop-admin
+#         userarn: arn:aws:iam::717279696402:user/ramesh
+#         username: ramesh
