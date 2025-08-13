@@ -44,3 +44,7 @@ metadata:
 4. Create a new ec2 instance and use aws configure and give the accesskey of ramesh
 5. Install kubernetes
 5. To access eks = aws eks update-kubeconfig --region us-east-1 --name eks-cluster 
+6. To avoid adding to a group = 
+  mapUsers: |
+         - userarn: arn:aws:iam::833660969111:user/abc
+           username: abc
