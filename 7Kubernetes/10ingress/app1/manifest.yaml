@@ -81,7 +81,7 @@ spec:
 #         backend:
 #           service:
 #             name: nginx-service #name of your Service connecting to your Nginx deployment
-#             port:
+#             port: 
 #               number: 80
 
 # Request: http://mynginx.example.com/ → goes to nginx-service:80 → your Nginx pod
