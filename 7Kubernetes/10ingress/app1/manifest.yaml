@@ -66,3 +66,30 @@ spec:
       #       port:
       #         number: 80        
  
+#  spec:
+#   ingressClassName: alb
+#   tls: #To add tls certificate
+#   - hosts:
+#     - app1.example.com
+#     secretName: my-tls-secret
+#   rules: HTTP rule
+#   - host: "mynginx.example.com" #the URL path in incoming HTTP requests
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: nginx-service #name of your Service connecting to your Nginx deployment
+#             port:
+#               number: 80
+
+# Request: http://mynginx.example.com/ → goes to nginx-service:80 → your Nginx pod
+
+# Request: http://mynginx.example.com/app1 → still goes to Nginx, but Nginx decides whether /app1 exists or not.
+
+#How to use ingress:
+# 1. Get a domain from Godaddy
+# 2. Create a hosted zone in aws and add the domain
+# 3. Add a record to the hosted zone and update the ELB Ip address inside the record
+# 4. In the ingress code add your domain details 
