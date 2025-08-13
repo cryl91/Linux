@@ -91,5 +91,6 @@ spec:
 #How to use ingress:
 # 1. Get a domain from Godaddy
 # 2. Create a hosted zone in aws and add the domain
-# 3. Add a record to the hosted zone and update the ELB Ip address inside the record
+# 3. Add a record(CNAME = for DNS name or A record = if IP) to the hosted zone and update the ELB Ip address inside the record
 # 4. In the ingress code add your domain details 
+# 5. When you visit app1.example.com: DNS translates it to the Load Balancer address -> The LB forwards traffic to your Ingress -> Ingress routes it to your Service -> Service sends it to your Pods

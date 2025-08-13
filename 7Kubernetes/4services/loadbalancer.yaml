@@ -1,3 +1,5 @@
+#In AWS EKS when you create a Load Balancer service an AWS Classic Load Balancer (CLB) or Network Load Balancer (NLB) by default. You’ll get an NLB or CLB (depending on EKS setup)
+#If you want an Application Load Balancer (ALB), you don’t use Service directly, you use the AWS Load Balancer Controller + Ingress.
 #Login in to one more container and curl ip/servicename. To get ip = kubectl get services 
 apiVersion: v1
 kind: Pod

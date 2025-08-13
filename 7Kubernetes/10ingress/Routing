@@ -1,0 +1,52 @@
+1. Host-based routing(Different Domains) = Decision based on the hostname (domain) in the URL. Used when you have different apps on different domains/subdomains. Example:
+
+https://app1.example.com   → Service: app1
+https://app2.example.com   → Service: app2
+
+Ingress Yaml: 
+rules:
+  - host: app1.example.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: app1
+              port:
+                number: 80
+  - host: app2.example.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: app2
+              port:
+                number: 80
+
+2. Path-based routing = Decision based on the URL path after the domain. Used when you have one domain but different apps or services behind different paths. Example:
+
+https://example.com/app1   → Service: app1
+https://example.com/app2   → Service: app2
+
+Ingress Yaml: 
+rules:
+  - host: example.com
+    http:
+      paths:
+        - path: /app1
+          pathType: Prefix
+          backend:
+            service:
+              name: app1
+              port:
+                number: 80
+        - path: /app2
+          pathType: Prefix
+          backend:
+            service:
+              name: app2
+              port:
+                number: 80
