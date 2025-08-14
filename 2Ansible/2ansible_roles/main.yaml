@@ -4,3 +4,12 @@
   roles:
   - catalogue
   - mongodb
+#Ansible, a role is basically a structured, reusable way of organizing your automation code.
+#Think of it as a folder-based package that contains everything needed to configure a specific part of your system — tasks, variables, files, templates, handlers, etc.
+# Advantages
+# 1. Reusability → Write once, use anywhere.
+# 2. Organization → Everything about that component is in one place.
+# 3. Shareability → Publish on Ansible Galaxy or share internally.
+# 4. Maintainability → Easy to update or replace a single role without touching other parts.
+
+#Ansible Galaxy is like GitHub for Ansible roles — it’s a public (and also private) repository where you can find, download, and share pre-built Ansible roles and collections instead of writing everything from scratch.
