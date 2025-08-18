@@ -1,0 +1,36 @@
+pipeline {
+    agent any //To run on different agent = agent { node { label 'agent1' } }
+    environment {
+    user = 'abc'
+    }
+    parameters {
+         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
+    stages {
+        
+        //In Jenkins, a job (sometimes called a project) is basically a unit of work that Jenkins runs. It’s what you create on the Jenkins dashboard when you click “New Item”.
+        stage('Test') {
+            steps {
+            //build job: 'my-other-job' → Name of the Jenkins job you want to trigger. "Build job: 'my-other-job', wait: false". Here wait: false = Supports waiting for completion (default) or fire-and-forget.
+            sh '''
+            echo "buildJob"
+            ls -ltr
+               '''
+            }
+            
+        }
+        }
+    
+        post {
+            always {
+                echo "I will run everytime"
+            }
+
+            success {
+                echo "I will run only on success"
+            }
+            failure {
+                echo "I will run only on failure"
+            }
+        }
+}
