@@ -28,9 +28,9 @@ pipeline {
         stage('Test') {
             steps {
             //build job: 'my-other-job' → Name of the Jenkins job you want to trigger. "Build job: 'my-other-job', wait: false". Here wait: false = Supports waiting for completion (default) or fire-and-forget.
+            buildjob: 'abcde', wait: false //runs another Jenkins job named 'abcde'.
             sh '''
             echo "Testing"
-            buildjob: 'abcde', wait: false
             ls -ltr
                '''
             }
