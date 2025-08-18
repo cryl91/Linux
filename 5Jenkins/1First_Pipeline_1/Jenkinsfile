@@ -9,7 +9,7 @@ pipeline {
     stages {
         
         //In Jenkins, a job (sometimes called a project) is basically a unit of work that Jenkins runs. It’s what you create on the Jenkins dashboard when you click “New Item”.
-        stage('Test') {
+        stage('BuildJob') {
             steps {
             //build job: 'my-other-job' → Name of the Jenkins job you want to trigger. "Build job: 'my-other-job', wait: false". Here wait: false = Supports waiting for completion (default) or fire-and-forget.
             sh '''
