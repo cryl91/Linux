@@ -18,3 +18,5 @@ ENV Name=shiva \
     Run yum install epel-release -y \ 
     && yum install nginx -y
 CMD ["nginx", "-g", "daemon off;"]
+#By default, Nginx runs as a daemon (background process). On a normal Linux server, this is fine because systemd or init manages it.
+#But inside a Docker container, Docker expects the main process to run in the foreground. If Nginx goes into the background (daemon mode), Docker will think the container has finished running and stop it immediately.

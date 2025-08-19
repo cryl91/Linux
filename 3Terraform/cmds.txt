@@ -44,5 +44,11 @@
         4. Import the public key into aws in "KeyPairs" section. 
         5. Login from gitbash = ssh -i privatekeyfilepath ec2-user@<public-ip>.
         --To see detailed logs = ssh -vvv -i /c/devops/Linux/lock ec2-user@44.202.67.36
-
-
+--Terraform import = 
+        1. Bring an existing resource (created manually or outside Terraform) under Terraform’s management.
+        2. It does not create the resource, only adds it to the state file.
+        3. After importing, you must write the corresponding code in .tf file.
+        4. terraform import aws_instance.my_ec2 i-1234567890abcdef = aws_instance.my_ec2 → Terraform resource block, i-1234567890abcdef → AWS EC2 instance ID
+--Terraform Refresh = Syncs the Terraform state file with the real infrastructure.If something was changed outside Terraform, refresh updates the state.
+Doesn’t modify resources, only updates state.
+--Terraform Taint = Marks a resource for recreation in the next terraform apply.
