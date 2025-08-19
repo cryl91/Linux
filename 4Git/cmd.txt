@@ -4,6 +4,7 @@
 3. In local computer = Git init+ git remote add origin <Http-URL-of-your-repo>
 4. Local computer = git add .; git commit -m "First" ; git push origin main
 5. To use git pull = git pull origin master
+--To change the existing commit message = git commit --ammend -m "message"
 
 --branch = git branch -m main 
 --Git checkout -b feature = Creates and switches to the new branch
