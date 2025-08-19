@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
             //build job: 'my-other-job' → Name of the Jenkins job you want to trigger. "Build job: 'my-other-job', wait: false". Here wait: false = Supports waiting for completion (default) or fire-and-forget.
-            build job: 'abcde', wait: false //runs another Jenkins job named 'abcde' ie create a new Item -> pipeline -> from git a jenkinsfile.
+            //build job: 'abcde', wait: false //runs another Jenkins job named 'abcde' ie create a new Item -> pipeline -> from git a jenkinsfile.
             sh '''
             echo "Testing and $MY_SECRET"
             ls -ltr
