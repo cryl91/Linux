@@ -6,9 +6,18 @@ Docker compose down: docker-compose down
 
 Docker container delete = docker rm -f $(docker ps -a -q)
 Docker Images delete = docker rmi -f $(docker images -a -q)
-Docker network = Docker network create <name>
-Docker volumes map(unnamed) = docker run -d -p 80:80 -v /home/ec2-user/nginx-data:/usr/share/nginx/html ee0e6cbb7162
-Docker volumes map(named) = docker volume create <name>+ docker run -d -p 80:80 -v <volume-name>:/usr/share/nginx/html ee0e6cbb7162 
+Docker network = 
+    1. Bridge Network = Default Network
+    2. Host network = Docker run -d --network host nginx (ie No need of -p 80:80 bcase if your container runs on port 80,it immediately bounds to host's port 80). 
+    3. Custom Bridge = Docker network create new1 + Docker run -d --network new1 -p 80:80 nginx ( ie Maps the host port 80 to container port 80 in custom bridge network).  
+Docker Volumes = 
+    1. Host Volumes/Bind Mounts = Docker run -v /hostpath:/containerpath ee0e6cbb7162
+    2. Unnamed Volumes/Anonymous Volumes = Docker run -v /containerpath ee0e6cbb7162
+    3. Named Volumes = docker volume create <name>+ docker run -d -p 80:80 -v <volume-name>:/usr/share/nginx/html ee0e6cbb7162 
+
+Docker container top/stats container-name
+Docker container logs container-name
+Docker container inspect conatainer-name
 
 --Install Docker = 
 1. Sudo yum install docker -y
@@ -21,6 +30,5 @@ Docker volumes map(named) = docker volume create <name>+ docker run -d -p 80:80 
 1. Docker login 
 2. Name image this way = the full name for Docker Hub (username/repo:tag). Ex = cryl91/imagename:1
 3. docker push cryl91/img:1
-
 
 

@@ -53,5 +53,5 @@
 --Terraform Refresh = Syncs the Terraform state file with the real infrastructure.If something was changed outside Terraform, refresh updates the state.
 Doesn’t modify resources, only updates state.
 --Terraform Taint = Marks a resource for recreation in the next terraform apply.
-        1. terraform taint aws_instance.my_ec2
-        2. terraform apply
+        1. terraform taint aws_instance.my_ec2 -> terraform apply
+        2. Taint is depreceated, so you can use = terraform apply -replace = "aws_instance.my_ec2"
