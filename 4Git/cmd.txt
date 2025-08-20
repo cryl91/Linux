@@ -11,3 +11,6 @@
 --Delete Branch = 
     1. Delete a Local Branch = git branch -D branch_name
     2. Delete a Remote Branch = git push origin --delete branch_name
+--Git revert(Undos to specific commit by creating a new commit+ Preserves history) = git revert <commit-hash>
+--Git reset(Undos to specific commit without creating a new commit+ Does not Preserve history) = git reset <commit-hash>
+--Git show head = Shows head points to which beanch
