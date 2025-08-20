@@ -1,4 +1,5 @@
 #Put nodeName inside the container spec, but in Kubernetes the field nodeName belongs at the Pod spec level, not under containers
+#nodeName: <master-node-name> = To place the pod on the master node
 apiVersion: v1
 kind: Pod
 metadata:
@@ -21,4 +22,4 @@ spec:
   - name: nginx2
     image: nginx
     ports:
-    - containerPort: 80  
+    - containerPort: 80 

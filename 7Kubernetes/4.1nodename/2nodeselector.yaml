@@ -1,4 +1,7 @@
-#Put nodeName inside the container spec, but in Kubernetes the field nodeName belongs at the Pod spec level, not under containers
+#nodeSelector always expects a key–value pair of labels. So: 
+  #1. Add a label to node: kubectl label node ip-192-168-10-94.ec2.internal role=frontend
+  #2. kubectl get nodes --show-labels
+
 apiVersion: v1
 kind: Pod
 metadata:
