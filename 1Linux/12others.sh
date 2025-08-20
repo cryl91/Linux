@@ -18,3 +18,4 @@ fi
 On command line = 
     1. ! systemctl is-active --quiet nginx && echo "nginx service down" && systemctl start nginx
     2. for svc in docker nginx; do ! systemctl is-active --quiet $svc && echo "$svc service down" && systemctl start $svc; done
+

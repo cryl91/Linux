@@ -13,10 +13,10 @@
 
 var=$1
 
-while IFS= read -r line; #IFS is a special shell variable that tells the shell what characters to use to split input into words. Default value: space, tab, and newline
+while IFS= read -r user; #IFS is a special shell variable that tells the shell what characters to use to split input into words. Default value: space, tab, and newline
 do #Without IFS the spaces in the lines are reduced to one space. While IFS Preserves the spaces.
-    if [[ "$line" == *$var* ]]; then
-        echo "Found it! --> $line"
+    if [[ "$user" == *$var* ]]; then
+        echo "Found it! --> $user"
         # Optionally exit the loop early
         break
     fi
