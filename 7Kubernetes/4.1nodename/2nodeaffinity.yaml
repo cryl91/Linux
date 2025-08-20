@@ -1,0 +1,45 @@
+# matchExpressions = operator: In
+#   1. In = Means the node’s label value must be one of the given values
+#   2. NotIn = Means the node’s label value must NOT be one of the given values.
+#   3. Exists = Only checks that the key exists (doesn’t matter what the value is). ie Pod can run on any node that has the label role (with any value).
+#   4. DoesNotExist = Node must NOT have that key at all.
+#   5. Gt (greater than) / Lt (less than) = Only works if the value is an integer.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstnode
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:   # strict rule (must match, like nodeSelector)
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: role
+            operator: In
+            values:
+            - first 
+  containers:
+  - name: nginx1
+    image: nginx
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secondnode
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:   # soft rule (scheduler tries, but if not possible, it can run anywhere).
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: role
+            operator: In
+            values:
+            - second
+  containers:
+  - name: nginx2
+    image: nginx
+    ports:
+    - containerPort: 80  
