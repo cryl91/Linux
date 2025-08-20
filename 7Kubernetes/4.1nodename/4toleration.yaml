@@ -6,17 +6,18 @@
 #   2. Exists → Match key only, ignore value (ie the pod tolerates the taint if the key exists, regardless of the value).
 
 #To see tainted nodes = Kubectl describe node <nodename> | grep -i "taint" (-i means case-insensitive)
+#nodeName: ip-192-168-10-94.ec2.internal = If you use nodename Kubernetes will directly bind the Pod to that node, even if the node is tainted. But without tolerations the kubelet on that node will reject it and hence Pod will stay in Pending (unschedulable due to taint) until tolerations match.
 apiVersion: v1
 kind: Pod
 metadata:
   name: firstnode
 spec:
   # nodeName: ip-192-168-10-94.ec2.internal
-  # tolerations:
-  # - key: "role" #Double quotes here
-  #   operator: "Equal" #means key/value must match.
-  #   value: "first"
-  #   effect: "NoSchedule" #prevents scheduling unless tolerated.
+  tolerations:
+  - key: "role" #Double quotes here
+    operator: "Equal" #means key/value must match.
+    value: "first"
+    effect: "NoSchedule" #prevents scheduling unless tolerated.
   containers:
   - name: nginx1
     image: nginx
