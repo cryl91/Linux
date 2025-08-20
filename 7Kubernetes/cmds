@@ -26,7 +26,6 @@
 15.alias ka "kubectl apply -f manifest.yaml" -> from next time just type ka to apply
 16.Install EBS Drivers = kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.7"
 --Pods are the smallest deployable units in Kubernetes, but they’re not meant to be scaled directly. Instead, you should scale a Deployment, ReplicaSet, or StatefulSet—these manage Pods and support scaling. Ex = kubectl scale deployment nginx --replicas=2
---Kubectl run nginx --image=nginx --replicas=2
 
 --Add the AWS EBS CSI Helm repo: Install with Helm
 1. helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
