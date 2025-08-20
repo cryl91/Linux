@@ -8,7 +8,7 @@ metadata:
   name: firstnode
 spec:
   nodeSelector: 
-    role:first
+    role: first 
   containers:
   - name: nginx1
     image: nginx
@@ -21,7 +21,7 @@ metadata:
   name: secondnode
 spec:
   nodeSelector:
-    role:second
+    role: second
   containers:
   - name: nginx2
     image: nginx
