@@ -13,9 +13,9 @@ spec:
   nodeName: ip-192-168-10-94.ec2.internal
   tolerations:
   - key: "role" #Double quotes here
-    operator: "Equal"
+    operator: "Equal" #means key/value must match.
     value: "first"
-    effect: "NoSchedule"
+    effect: "NoSchedule" #prevents scheduling unless tolerated.
   containers:
   - name: nginx1
     image: nginx
