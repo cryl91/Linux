@@ -1,3 +1,4 @@
+#Put nodeName inside the container spec, but in Kubernetes the field nodeName belongs at the Pod spec level, not under containers
 apiVersion: v1
 kind: Pod
 metadata:
@@ -6,10 +7,10 @@ metadata:
     envirnoment: production
     app: web
 spec:
+  nodeName: ip-192-168-10-94.ec2.internal
   containers:
   - name: nginx1
     image: nginx
-    nodeName: ip-192-168-10-94.ec2.internal
     ports:
     - containerPort: 80
 ---
@@ -21,9 +22,9 @@ metadata:
     envirnoment: production
     app: web
 spec:
+  nodeName: ip-192-168-61-165.ec2.internal
   containers:
   - name: nginx2
     image: nginx
-    nodeName: ip-192-168-61-165.ec2.internal
     ports:
     - containerPort: 80  
