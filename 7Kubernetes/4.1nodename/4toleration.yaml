@@ -11,7 +11,7 @@ kind: Pod
 metadata:
   name: firstnode
 spec:
-  nodeName: ip-192-168-10-94.ec2.internal
+  # nodeName: ip-192-168-10-94.ec2.internal
   # tolerations:
   # - key: "role" #Double quotes here
   #   operator: "Equal" #means key/value must match.
