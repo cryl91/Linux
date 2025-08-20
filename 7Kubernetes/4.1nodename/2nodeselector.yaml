@@ -1,13 +1,14 @@
 #nodeSelector always expects a key–value pair of labels. So: 
   #1. Add a label to node: kubectl label node ip-192-168-10-94.ec2.internal role=frontend
   #2. kubectl get nodes --show-labels
-
+#kubernetes.io/hostname=<node-name> = This is a default label that Kubernetes automatically applies to all nodes and you can use this as key-value in the code if you dont want to label nodes.
 apiVersion: v1
 kind: Pod
 metadata:
   name: firstnode
 spec:
-  nodeName: ip-192-168-10-94.ec2.internal
+  nodeSelector: 
+    role:first
   containers:
   - name: nginx1
     image: nginx
@@ -19,7 +20,8 @@ kind: Pod
 metadata:
   name: secondnode
 spec:
-  nodeName: ip-192-168-61-165.ec2.internal
+  nodeSelector:
+    role:second
   containers:
   - name: nginx2
     image: nginx
