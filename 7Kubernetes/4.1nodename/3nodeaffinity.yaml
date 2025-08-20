@@ -24,22 +24,22 @@ spec:
     ports:
     - containerPort: 80
 ---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: secondnode
-spec:
-  affinity:
-    nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:   # soft rule (scheduler tries, but if not possible, it can run anywhere).
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: role
-            operator: In
-            values:
-            - second
-  containers:
-  - name: nginx2
-    image: nginx
-    ports:
-    - containerPort: 80  
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: secondnode
+# spec:
+#   affinity:
+#     nodeAffinity:
+#       preferredDuringSchedulingIgnoredDuringExecution:   # soft rule (scheduler tries, but if not possible, it can run anywhere).
+#         nodeSelectorTerms:
+#         - matchExpressions:
+#           - key: role
+#             operator: In
+#             values:
+#             - second
+#   containers:
+#   - name: nginx2
+#     image: nginx
+#     ports:
+#     - containerPort: 80  
