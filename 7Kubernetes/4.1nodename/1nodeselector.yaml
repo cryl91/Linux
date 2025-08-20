@@ -1,0 +1,24 @@
+#Put nodeName inside the container spec, but in Kubernetes the field nodeName belongs at the Pod spec level, not under containers
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firstnode
+spec:
+  nodeName: ip-192-168-10-94.ec2.internal
+  containers:
+  - name: nginx1
+    image: nginx
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secondnode
+spec:
+  nodeName: ip-192-168-61-165.ec2.internal
+  containers:
+  - name: nginx2
+    image: nginx
+    ports:
+    - containerPort: 80  
