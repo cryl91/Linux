@@ -1,6 +1,7 @@
 #Compression is the process of reducing the size of files or directories so they take up less disk space and transfer faster over a network.
 # ZIP method = zip -r <O/P zip filename> <destination to be compressed>
 # Tar method = tar -cfz <O/P tar filename> <destination to be compressed ie .tar.gz>
+
 # zip -r "$BACKUP_FILE" "$SRC_DIR" means:
 #     1. zip = command to create a zip archive.
 #     2. -r = recursive (include all subdirectories).

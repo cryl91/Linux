@@ -1,0 +1,20 @@
+To monitor disk usage = df -hT | awk '{print $6}' | cut -d% -f1
+    1. df -hT = shows disk usage with filesystem type.
+    2. In its output, the Use% column (e.g., 45%) is in the 6th field, not the 5th.
+    3. awk '{print $6}' = prints that column.
+    4. cut -d% -f1 = removes the % sign, leaving just the number
+
+[ec2-user@ip-172-31-20-206 ~]$ sudo systemctl is-active docker
+active
+[ec2-user@ip-172-31-20-206 ~]$ sudo systemctl is-active docker --quiet
+[ec2-user@ip-172-31-20-206 ~]$ sudo systemctl is-active docker
+
+#!/bin/bash
+if !systemctl is-active docker --quiet nginx; then
+echo "service down"
+systemctl start nginx
+fi
+
+On command line = 
+    1. ! systemctl is-active --quiet nginx && echo "nginx service down" && systemctl start nginx
+    2. for svc in docker nginx; do ! systemctl is-active --quiet $svc && echo "$svc service down" && systemctl start $svc; done
