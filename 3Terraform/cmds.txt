@@ -12,7 +12,7 @@
 --data sources = you can query the data dynamically from source ie aws
 
 --tfvars = terraform plan -var-file="prod.tfvars"
---Pass variables = Terraform apply -var ="region=us-east-1"
+--Pass variables = Terraform apply -var="region=us-east-1"
 
 --Increase tmp space
         1. sudo rm -rf /tmp/*
