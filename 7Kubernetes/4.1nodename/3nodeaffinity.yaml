@@ -1,7 +1,7 @@
 # matchExpressions = operator: In
 #   1. In = Means the node’s label value must be one of the given values
 #   2. NotIn = Means the node’s label value must NOT be one of the given values.
-#   3. Exists = Only checks that the key exists (doesn’t matter what the value is). ie Pod can run on any node that has the label role (with any value).
+#   3. Exists = Only checks that the key exists (doesn’t matter what the value is).
 #   4. DoesNotExist = Node must NOT have that key at all.
 #   5. Gt (greater than) / Lt (less than) = Only works if the value is an integer.
 apiVersion: v1
