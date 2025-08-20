@@ -12,6 +12,16 @@ spec:
     nodeName: ip-192-168-10-94.ec2.internal
     ports:
     - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labels
+  labels: 
+    envirnoment: production
+    app: web
+spec:
+  containers:
   - name: nginx2
     image: nginx
     nodeName: ip-192-168-61-165.ec2.internal
