@@ -5,17 +5,18 @@
 #   1. Equal(default) = Match key & value(ie the taint’s key and value must match the toleration’s key and value).
 #   2. Exists → Match key only, ignore value (ie the pod tolerates the taint if the key exists, regardless of the value).
 
+#To see tainted nodes = Kubectl describe node <nodename> | grep -i "taint" (-i means case-insensitive)
 apiVersion: v1
 kind: Pod
 metadata:
   name: firstnode
 spec:
   nodeName: ip-192-168-10-94.ec2.internal
-  tolerations:
-  - key: "role" #Double quotes here
-    operator: "Equal" #means key/value must match.
-    value: "first"
-    effect: "NoSchedule" #prevents scheduling unless tolerated.
+  # tolerations:
+  # - key: "role" #Double quotes here
+  #   operator: "Equal" #means key/value must match.
+  #   value: "first"
+  #   effect: "NoSchedule" #prevents scheduling unless tolerated.
   containers:
   - name: nginx1
     image: nginx
