@@ -84,4 +84,4 @@ nodeGroups:
 3. Add Promethus in grafana -> Import Dashboard/Standard Template = 3662
 4. To get more info expose kube-metrics = kubectl expose service prometheus-kube-state-metrics --type=NodePort --target-port=8080 --name=prometheus-kubemetrics
 
-
+--Installing Argocd = https://argo-cd.readthedocs.io/en/stable/getting_started/ 
