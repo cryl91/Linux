@@ -84,4 +84,10 @@ nodeGroups:
 3. Add Promethus in grafana -> Import Dashboard/Standard Template = 3662
 4. To get more info expose kube-metrics = kubectl expose service prometheus-kube-state-metrics --type=NodePort --target-port=8080 --name=prometheus-kubemetrics
 
---Installing Argocd = https://argo-cd.readthedocs.io/en/stable/getting_started/ 
+--Installing Argocd = svc+secret+Password decode
+1. https://argo-cd.readthedocs.io/en/stable/getting_started/ 
+2. kubectl edit svc argocd-server -n argocd = Change cluster IP -> nodeport 
+3. Kubectl edit secret argocd-initial-admin-secret -n argocd = Get the password to login (Username is defaut "admin")
+4. Password needs to be decoded =  echo "T1R0ZGo2dnhKWGFxeWN0bg==" | base64 --decode
+5. Login in the browser using = Node IP:Nodeport number
+6. In the argocd website = Create application -> app name, project name(default), sync policy(automatic), source url(github repo), path(github path), destination/cluster url(choose default like https:kuberenets.default.svc), namespace(default) -> click create button
