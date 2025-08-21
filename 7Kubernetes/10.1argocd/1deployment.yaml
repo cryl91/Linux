@@ -6,7 +6,7 @@ metadata:
     app: guestbook
     tier: frontend
 spec:
-  replicas: 4 #You can change this to see argocd changes automatically
+  replicas: 3 #You can change this to see argocd changes automatically
   selector: 
     matchLabels:
       tier: frontend
