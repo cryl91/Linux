@@ -91,3 +91,9 @@ nodeGroups:
 4. Password needs to be decoded =  echo "T1R0ZGo2dnhKWGFxeWN0bg==" | base64 --decode
 5. Login in the browser using = Node IP:Nodeport number
 6. In the argocd website = Create application -> app name in smallcase, project name(default), sync policy(automatic), source url(github repo), path(github path), destination/cluster url(choose default like https:kuberenets.default.svc), namespace(default) -> click create button
+
+--Benefits of argocd = 
+1. Self-Healing = If someone makes a manual change in the cluster (kubectl edit/apply), ArgoCD can auto-revert it back to the Git-defined state.
+2. Easy Rollbacks = Since Git keeps your history, rolling back = checking out an old commit and syncing.
+3. 
+4. So Argo CD = GitOps + Kubernetes deployments made easy, safe, and auditable.
