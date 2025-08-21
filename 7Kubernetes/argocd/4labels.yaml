@@ -5,7 +5,7 @@ kind: Pod
 metadata:
   name: labels
   labels: 
-    envirnoment: production
+    envirnoment: production2
     app: web
 spec:
   containers:

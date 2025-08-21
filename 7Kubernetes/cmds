@@ -90,4 +90,4 @@ nodeGroups:
 3. Kubectl edit secret argocd-initial-admin-secret -n argocd = Get the password to login (Username is defaut "admin")
 4. Password needs to be decoded =  echo "T1R0ZGo2dnhKWGFxeWN0bg==" | base64 --decode
 5. Login in the browser using = Node IP:Nodeport number
-6. In the argocd website = Create application -> app name, project name(default), sync policy(automatic), source url(github repo), path(github path), destination/cluster url(choose default like https:kuberenets.default.svc), namespace(default) -> click create button
+6. In the argocd website = Create application -> app name in smallcase, project name(default), sync policy(automatic), source url(github repo), path(github path), destination/cluster url(choose default like https:kuberenets.default.svc), namespace(default) -> click create button
