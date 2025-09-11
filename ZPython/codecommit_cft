@@ -3,14 +3,15 @@ version: 0.2
 env:
   parameter-store:
     para: dockercred
+  variables:
     user: "cryl91@gmail.com"
-    pass: Cyril
+    pass: "Cyril"
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      python: 3.11 #choose the language in which the program is written in.
   pre_build:
-    commands:
+    commands: #Installing the dependencies
       - pip install -r ZPython/requirements.txt
   build:
     commands:
@@ -18,8 +19,8 @@ phases:
       - echo "Building Docker Image"
       - echo $pass | docker login -u $user --password-stdin
       - docker build -t "cryl91/$para:1" .
-      - docker push <>  
+      - docker push "cryl91/$para:1"
   post_build:
     commands:
       - echo "Build is successful"
-      # - echo "Hello World"
+      
