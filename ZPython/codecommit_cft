@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  parameter-store:
+    para: dockercred
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - pip install -r ZPython/requirements.txt
+  build:
+    commands:
+      - cd ZPython/
+      - echo "Building Docker Image"
+      - docker build -t "cryl91/$para:1" .
+      - docker push <>  
+  post_build:
+    commands:
+      - echo "Build is successful"
+      # - echo "Hello World"
