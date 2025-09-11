@@ -3,6 +3,8 @@ version: 0.2
 env:
   parameter-store:
     para: dockercred
+    user: "cryl91@gmail.com"
+    pass: Cyril
 phases:
   install:
     runtime-versions:
@@ -14,6 +16,7 @@ phases:
     commands:
       - cd ZPython/
       - echo "Building Docker Image"
+      - echo $pass | docker login -u $user --password-stdin
       - docker build -t "cryl91/$para:1" .
       - docker push <>  
   post_build:
