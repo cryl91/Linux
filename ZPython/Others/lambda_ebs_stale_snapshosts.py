@@ -1,4 +1,5 @@
 import boto3
+#use boto3 documentation to modify the code
 
 def lambda_handler(event, context):
     ec2 = boto3.client('ec2')
@@ -18,7 +19,7 @@ def lambda_handler(event, context):
     for snapshot in response['Snapshots']:
         snapshot_id = snapshot['SnapshotId']
         volume_id = snapshot.get('VolumeId')
-
+  
         if not volume_id:
             # Delete the snapshot if it's not attached to any volume
             ec2.delete_snapshot(SnapshotId=snapshot_id)
