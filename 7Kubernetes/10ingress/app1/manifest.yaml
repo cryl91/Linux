@@ -55,7 +55,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app1
+            name: app1 #So whenever ALB recieves traffic and finds matching rules, it will forward the request to service "app1"  
             port:
               number: 80
       # - path: /api #Another Ingress Rule defined
