@@ -48,7 +48,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app1.joindevops.online"
+  - host: "app1.joindevops.online" 
     http:
       paths: 
       - path: / # Represents hostname based routing. For path based routing we give "path: /app1"
