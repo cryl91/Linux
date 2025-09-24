@@ -2,3 +2,21 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: roboshop
+
+# Reousrce Quota for a namespace using command = kubectl create quota my-quota \
+#   --namespace=dev \
+#   --hard=cpu=4,memory=8Gi,pods=10,services=5
+
+# Reousrce Quota for a namespace using yaml file = 
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: my-quota
+#   namespace: dev
+# spec:
+#   hard:
+#     pods: "10"
+#     requests.cpu: "2"
+#     requests.memory: 4Gi
+#     limits.cpu: "4"
+#     limits.memory: 8Gi
