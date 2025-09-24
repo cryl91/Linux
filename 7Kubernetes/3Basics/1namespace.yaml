@@ -5,7 +5,7 @@ metadata:
 
 # Reousrce Quota for a namespace using command = kubectl create quota my-quota \
 #   --namespace=dev \
-#   --hard=cpu=4,memory=8Gi,pods=10,services=5
+#   --hard=cpu=4,memory=8Gi
 
 # Reousrce Quota for a namespace using yaml file = 
 # apiVersion: v1
