@@ -6,7 +6,7 @@ metadata:
   region: us-east-1
 
 #Name,Instancetype,AZ,Desired Capacity
-managedNodeGroups: # this is also completely managed by AWS
+managedNodeGroups: # this is also completely managed by AWS = 2 types nodegroups ie Managed Node Group and Self-Managed ASG = Your worker nodes should be part of an EC2 Auto Scaling Group (ASG) (for self-managed) or an EKS Managed Node Group.
   - name: spot
     instanceType: t2.medium
     # your K8 node can be anytime taken back by AWS
@@ -17,3 +17,41 @@ managedNodeGroups: # this is also completely managed by AWS
     desiredCapacity: 2
     ssh:
       publicKeyName: Linux # replace this with your keypair exists in AWS.
+
+
+# Using Terraform create eks cluster and nodegroups. After creating below code run terraform init+ terraform apply
+ 
+# provider "aws" {
+#   region = "us-east-1"
+# }
+
+# module "eks" {
+#   source  = "terraform-aws-modules/eks/aws"
+#   version = "20.8.5"
+
+#   cluster_name    = "my-cluster"
+#   cluster_version = "1.30"
+#   vpc_id          = "vpc-12345678"
+#   subnet_ids      = ["subnet-12345678", "subnet-87654321"]
+
+#   node_groups = {
+#     default = {
+#       desired_capacity = 2
+#       max_capacity     = 4
+#       min_capacity     = 1
+
+#       instance_types = ["t3.medium"]
+#       capacity_type  = "ON_DEMAND"
+#     }
+#   }
+# }
+
+# Deploy Cluster Autoscaler = Using Helm (recommended)
+# helm repo add autoscaler https://kubernetes.github.io/autoscaler
+# helm upgrade --install cluster-autoscaler \
+#   autoscaler/cluster-autoscaler \
+#   --namespace kube-system \
+#   --set autoDiscovery.clusterName=<YOUR-EKS-CLUSTER-NAME> \
+#   --set awsRegion=<YOUR-REGION> \
+#   --set rbac.serviceAccount.create=true \
+#   --set rbac.serviceAccount.name=cluster-autoscaler
