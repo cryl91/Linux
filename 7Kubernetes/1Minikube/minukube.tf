@@ -27,3 +27,4 @@ module "minikube" {
 # Steps = 
 # 1. Minikube install
 # 2. Minikube start(uses docker driver) or minikube start --memory = 4096 --driver = hyperkit 
+# 3. Minikube ssh = You wil login to the kubernetes cluster. And do curl podIP and you can access the pod application. 
