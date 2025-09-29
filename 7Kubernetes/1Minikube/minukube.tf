@@ -22,3 +22,8 @@ module "minikube" {
       "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/kubernetes-nginx-ingress/init.sh"
   ]
 }
+
+
+# Steps = 
+# 1. Minikube install
+# 2. Minikube start(uses docker driver) or minikube start --memory = 4096 --driver = hyperkit 
