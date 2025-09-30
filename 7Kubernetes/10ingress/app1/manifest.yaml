@@ -51,11 +51,11 @@ spec:
   - host: "app1.joindevops.online" 
     http:
       paths: 
-      - path: / # Represents hostname based routing. For path based routing we give "path: /app1"
+      - path: /abc # Represents hostname based routing. For path based routing we give "path: /app1"
         pathType: Prefix
         backend:
           service:
-            name: app1 #So whenever ALB recieves traffic and finds matching rules, it will forward the request to service "app1"  
+            name: app1 #So whenever ALB recieves traffic and finds "app1.joindevops.online/abc", it will forward the request to service "app1" on port 80.  
             port:
               number: 80
       # - path: /api #Another Ingress Rule defined
