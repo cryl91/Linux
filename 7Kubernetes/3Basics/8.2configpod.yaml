@@ -7,15 +7,15 @@ spec:
   - name: nginx
     image: nginx
     env:
-    - name: course
+    - name: course #A name given to the configmap value
       valueFrom: 
         configMapKeyRef:
-          name: configmap
+          name: configmap #The name of the configmap
           key: course
-    - name: Person
+    - name: Person 
       valueFrom: 
         configMapKeyRef:
-          name: configmap
+          name: configmap 
           key: duration
     - name: Trainer
       valueFrom: 
