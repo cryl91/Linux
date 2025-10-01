@@ -24,7 +24,9 @@ spec:
           key: trainer
 
 #Once the configmap values are created,you can kubectl exec -it podname -- bash -> type env. And the above values will appear. 
+#You can use the env values in coding as = os.env("envname")
 
+#Here we are creating a volume that reads the information from configmap. This allows changing the configmap vaues without restarting the pods. 
 apiVersion: v1
 kind: Pod
 metadata:
