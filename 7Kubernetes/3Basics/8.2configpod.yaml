@@ -24,3 +24,19 @@ spec:
           key: trainer
 
 #Once the configmap values are created,you can kubectl exec -it podname -- bash -> type env. And the above values will appear. 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envconfig
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumenMounts: #Here we are mounting the configmap in the path /opt
+    - name: abc
+      mountPath: /opt
+  volumes: #Here we are creating a volume that reads the information from configmap
+  - name: abc
+    configMap:
+      name: configmap
