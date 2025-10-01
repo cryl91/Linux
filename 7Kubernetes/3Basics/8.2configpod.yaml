@@ -22,3 +22,5 @@ spec:
         configMapKeyRef:
           name: configmap
           key: trainer
+
+#Once the configmap values are created,you can kubectl exec -it podname -- bash -> type env. And the above values will appear. 
