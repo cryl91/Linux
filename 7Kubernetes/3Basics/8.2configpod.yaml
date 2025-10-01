@@ -35,10 +35,11 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    volumenMounts: #Here we are mounting the configmap in the path /opt
+    volumenMounts: #Here we are storing the configmap in the path /opt
     - name: abc
       mountPath: /opt
   volumes: #Here we are creating a volume that reads the information from configmap
   - name: abc
     configMap:
       name: configmap
+#To see the values = kubectl exec -it podname -- bash -> cat /opt/abc
