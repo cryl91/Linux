@@ -25,6 +25,33 @@
 
 15.alias ka "kubectl apply -f manifest.yaml" -> from next time just type ka to apply
 16.Install EBS Drivers = kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.7"
+17. Create EKS Cluster = 
+  1. eksctl create cluster --name=observability \
+                      --region=us-east-1 \
+                      --zones=us-east-1a,us-east-1b \
+                      --without-nodegroup
+  2. This OIDC Provider allows pods to communicate with other resources of AWS ie This binds IAM with service accounts of kubernetes    
+  eksctl utils associate-iam-oidc-provider \ 
+    --region us-east-1 \
+    --cluster observability \
+    --approve
+  3. eksctl create nodegroup --cluster=observability \
+                        --region=us-east-1 \
+                        --name=observability-ng-private \
+                        --node-type=t3.medium \
+                        --nodes-min=2 \
+                        --nodes-max=3 \
+                        --node-volume-size=20 \
+                        --managed \
+                        --asg-access \
+                        --external-dns-access \
+                        --full-ecr-access \
+                        --appmesh-access \
+                        --alb-ingress-access \
+                        --node-private-networking
+
+  4. aws eks update-kubeconfig --name observability = # Update ./kube/config file
+
 --Pods are the smallest deployable units in Kubernetes, but they’re not meant to be scaled directly. Instead, you should scale a Deployment, ReplicaSet, or StatefulSet—these manage Pods and support scaling. Ex = kubectl scale deployment nginx --replicas=2
 
 --Add the AWS EBS CSI Helm repo: Install with Helm
