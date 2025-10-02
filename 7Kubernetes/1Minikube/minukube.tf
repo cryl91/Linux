@@ -28,3 +28,5 @@ module "minikube" {
 # 1. Minikube install
 # 2. Minikube start(uses docker driver) or minikube start --memory = 4096 --driver = hyperkit 
 # 3. Minikube ssh = You wil login to the kubernetes cluster. And do curl podIP and you can access the pod application. 
+
+#If running minikube on ec2 and trying to access using ec2 ipaddress, then use port forwarding = kubectl port-forward svc/argocd-server 9000:80 --address 0.0.0.0 -n argocd
