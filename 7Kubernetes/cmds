@@ -30,7 +30,7 @@
                       --region=us-east-1 \
                       --zones=us-east-1a,us-east-1b \
                       --without-nodegroup 
-  2. This OIDC Provider allows pods to communicate with other resources of AWS ie This binds IAM with service accounts of kubernetes    
+  2. This OIDC Provider allows pods to communicate with other resources of AWS ie it connects the kuberenetes service account with IAM Roles.     
   eksctl utils associate-iam-oidc-provider \ 
     --region us-east-1 \
     --cluster observability \
