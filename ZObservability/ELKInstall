@@ -21,7 +21,7 @@ ARN=$(aws iam get-role --role-name AmazonEKS_EBS_CSI_DriverRole --query 'Role.Ar
 ```
 - Command retrieves the ARN of the IAM role created for the EBS CSI controller service account.
 
-### 3) Deploy EBS CSI Driver
+### 3) Deploy EBS CSI Driver = This CSI Driver creates the ebs volume. 
 ```bash
 eksctl create addon --cluster observability --name aws-ebs-csi-driver --version latest \
     --service-account-role-arn $ARN --force
@@ -48,7 +48,7 @@ helm install elasticsearch \
 - It sets the number of replicas, specifies the storage class, and enables persistence labels to ensure
 data is stored on persistent volumes.
 
-### 6) Retrieve Elasticsearch Username & Password
+### 6) Retrieve Elasticsearch Username & Password = This is needed for fluentbit to talk to elasticsearch
 ```bash
 # for username
 kubectl get secrets --namespace=logging elasticsearch-master-credentials -ojsonpath='{.data.username}' | base64 -d
@@ -66,8 +66,7 @@ helm install kibana --set service.type=LoadBalancer elastic/kibana -n logging
 - Kibana provides a user-friendly interface for exploring and visualizing data stored in Elasticsearch.
 - It is exposed as a LoadBalancer service, making it accessible from outside the cluster.
 
-### 8) Install Fluentbit with Custom Values/Configurations
-- 👉 **Note**: Please update the `HTTP_Passwd` field in the `fluentbit-values.yml` file with the password retrieved earlier in step 6: (i.e NJyO47UqeYBsoaEU)"
+### 8) Install Fluentbit with Custom Values/Configurations = **Note**: Please update the `HTTP_Passwd` field in the `fluentbit-values.yml` file in the "OUTPUT section" with the password retrieved earlier in step 6: (i.e NJyO47UqeYBsoaEU)"
 ```bash
 helm repo add fluent https://fluent.github.io/helm-charts
 helm install fluent-bit fluent/fluent-bit -f fluentbit-values.yaml -n logging
