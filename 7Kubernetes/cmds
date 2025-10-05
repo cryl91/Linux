@@ -124,3 +124,5 @@ nodeGroups:
 2. Easy Rollbacks = Since Git keeps your history, rolling back = checking out an old commit and syncing.
 3. 
 4. So Argo CD = GitOps + Kubernetes deployments made easy, safe, and auditable.
+
+--To create a crashing pod = kubectl run busybox-crash --image=busybox -- /bin/sh "exit 1"
