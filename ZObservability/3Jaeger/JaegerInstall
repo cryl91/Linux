@@ -37,7 +37,7 @@
 - Storage: Stores traces for later retrieval (often a database like *Elasticsearch*).
 
 
-### Step 3: Export Elasticsearch CA Certificate
+### Step 3: Export Elasticsearch CA Certificate = ie install ELK before doing this as elasticsearch is used to store the traces. 
 - This command retrieves the CA certificate from the Elasticsearch master certificate secret and decodes it, saving it to a ca-cert.pem file.
 ```bash
 kubectl get secret elasticsearch-master-certs -n logging -o jsonpath='{.data.ca\.crt}' | base64 --decode > ca-cert.pem
@@ -68,7 +68,7 @@ helm repo update
 ```
 
 ### Step 8: Install Jaeger with Custom Values
-- 👉 **Note**: Please update the `password` field and other related field in the `jaeger-values.yaml` file with the password retrieved earlier in day-4 at step 6: (i.e NJyO47UqeYBsoaEU)"
+- 👉 **Note**: Please update the `password` field in storage section and other related field in the `jaeger-values.yaml` file with the password retrieved earlier in day-4 at step 6: (i.e NJyO47UqeYBsoaEU)"
 -  Command installs Jaeger into the tracing namespace using a custom jaeger-values.yaml configuration file. Ensure the password is updated in the file before installation.
 ```bash
 helm install jaeger jaegertracing/jaeger -n tracing --values jaeger-values.yaml
@@ -77,6 +77,7 @@ helm install jaeger jaegertracing/jaeger -n tracing --values jaeger-values.yaml
 - Command forwards port 8080 on your local machine to the Jaeger Query service, allowing you to access the Jaeger UI locally.
 ```bash
 kubectl port-forward svc/jaeger-query 8080:80 -n tracing
+To access using ec2 instance and running kuberenetes on it = kubectl port-forward svc/jaeger-query 8080:80 -n tracing --address 0.0.0.0
 
 ```
 
