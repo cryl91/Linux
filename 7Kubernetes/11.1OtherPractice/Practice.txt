@@ -1,0 +1,23 @@
+--Secrets = LAT GJDK
+    1. A = Ansible Vault
+    2. T = SSM Parameter Store
+    3. G = Github Secrets
+    4. J = Credentials
+    5. D = Container image scans using trivy, clair
+    6. K = Configmaps and secrets+ RBAC
+--Backup = GJDK
+    1. G = Git Mirror Clone ( git clone --mirror httpgithubrepo )
+    2. J = tar -czf $backup_dir/backupfile -C /var/lib/jenkins
+    3. D = tar -czf $backup_dir/backupfile -C /var/lib/docker
+    4. K = etcd = snapshot save and snapshot restore+ Velero
+       --Velero Backup = velero backup create cluster-backup-$(date +%F) --include-namespaces '*' --wait
+       --Velero Restore = velero restore create --from-backup cluster-backup-2025-10-23
+--Scaling = JK
+    1. J = Add Jenkins Agents -> use in Labels
+    2. K = HPA & VPA+ Cluster Autoscaler
+--Upgradation = K
+    1. Node Upgradation
+    2. Pod Upgradation
+    3. Deployment Strategies
+--Migration = K
+    1. Strategies and Steps
