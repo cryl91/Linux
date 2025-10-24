@@ -20,7 +20,6 @@ managedNodeGroups: # this is also completely managed by AWS = 2 types nodegroups
 
 
 # Using Terraform create eks cluster and nodegroups. After creating below code run terraform init+ terraform apply
- 
 # provider "aws" {
 #   region = "us-east-1"
 # }
