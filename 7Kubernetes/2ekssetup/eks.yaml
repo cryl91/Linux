@@ -54,3 +54,13 @@ managedNodeGroups: # this is also completely managed by AWS = 2 types nodegroups
 #   --set awsRegion=<YOUR-REGION> \
 #   --set rbac.serviceAccount.create=true \
 #   --set rbac.serviceAccount.name=cluster-autoscaler
+
+# eksctl create cluster \
+#   --name eks-cluster1 \
+#   --region us-west-2 \
+#   --nodegroup-name ondemand \
+#   --node-type t2.micro \
+#   --nodes 1 \
+#   --nodes-min 1 \
+#   --nodes-max 3 \
+#   --managed
