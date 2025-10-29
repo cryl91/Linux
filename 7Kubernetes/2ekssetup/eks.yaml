@@ -64,3 +64,36 @@ managedNodeGroups: # this is also completely managed by AWS = 2 types nodegroups
 #   --nodes-min 1 \
 #   --nodes-max 3 \
 #   --managed
+
+#To create a cluster with 2 different nodes like t3micro and t3medium
+# apiVersion: eksctl.io/v1alpha5
+# kind: ClusterConfig
+
+# metadata:
+#   name: multi-node-cluster
+#   region: us-west-2
+
+# vpc:
+#   cidr: 10.0.0.0/16
+
+# managedNodeGroups:
+#   - name: small-nodes
+#     instanceType: t3.micro
+#     desiredCapacity: 2
+#     minSize: 1
+#     maxSize: 3
+#     ssh:
+#       allow: true
+
+#   - name: medium-nodes
+#     instanceType: t3.medium
+#     desiredCapacity: 2
+#     minSize: 1
+#     maxSize: 3
+#     ssh:
+#       allow: true
+
+# Result:
+# 1 EKS cluster
+# 2 separate node groups (one t3.micro, one t3.medium)
+# Kubernetes scheduler can place pods depending on taints, tolerations, node selectors, or resource requirements.
