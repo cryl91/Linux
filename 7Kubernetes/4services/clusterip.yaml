@@ -28,3 +28,22 @@ spec:
     protocol: TCP
     port: 80 #This port number belongs to service
     targetPort: nginx-port #This port number belongs to container
+
+
+#Network policies = Kubernetes Network Policies are rules that control how pods communicate with each other and with external resources, based on IP addresses, ports, and namespaces.
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: allow-from-namespace
+#   namespace: target-namespace
+# spec:
+#   podSelector:
+#     matchLabels:
+#       app: my-app
+#   policyTypes:
+#   - Ingress
+#   ingress:
+#   - from:
+#     - namespaceSelector:
+#         matchLabels:
+#           name: source-namespace
