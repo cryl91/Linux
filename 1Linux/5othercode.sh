@@ -22,7 +22,7 @@ echo "$date"
 #echo "User is $user, Pass is $pass"
 
 #Array
-#array=("abc" "cdf" "xyz")
+#array=("abc" "cdf" "xyz") or a=(abc cde efg)
 #echo "${array[@]}"
 
 #IF
