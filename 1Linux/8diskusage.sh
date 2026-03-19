@@ -17,7 +17,7 @@ done <<< $disk_usage
 echo "Message: $message"
 
 
-#Cut is less powerful while awk is more powerful and it allows conditions, loops, arithmetic, string operations. 
+#Cut is less powerful while awk is more powerful and it allows conditions, loops, arithmetic, string operations. Use cut when you need speed and simplicity (just slicing text). Use awk when you need logic, filtering, or computation.
 #Cut = cut -d',' -f2 file.txt
 #Awk = awk -F',' '{print $2}' file.txt
 # Extract the 2nd column only if the first column equals "apple" = awk -F',' '$1=="apple" {print $2}' data.csv
