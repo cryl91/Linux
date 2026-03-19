@@ -15,3 +15,9 @@ fi
 done <<< $disk_usage
 
 echo "Message: $message"
+
+
+#Cut is less powerful while awk is more powerful and it allows conditions, loops, arithmetic, string operations. 
+#Cut = cut -d',' -f2 file.txt
+#Awk = awk -F',' '{print $2}' file.txt
+# Extract the 2nd column only if the first column equals "apple" = awk -F',' '$1=="apple" {print $2}' data.csv
