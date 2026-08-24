@@ -7,5 +7,3 @@ echo "Yes"
 #To ssh = ssh -i /c/users/cyril/downloads/vpcpem.pem ec2-user@13.218.108.176   
 #To copy from local to ec2 server = scp -i C:/Users/cyril/Downloads/vpcpem.pem C:/Users/cyril/Downloads/vpcpem.pem ec2-user@13.218.108.176:/home/ec2-user/
 
-
-
